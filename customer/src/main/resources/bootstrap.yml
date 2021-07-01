@@ -1,0 +1,19 @@
+server:
+  port: 9091
+
+# nacos服务地址
+nacos:
+  server: 81.68.182.234:18848
+
+spring:
+  application:
+    # 服务名
+    name: nacos-customer
+  cloud:
+    nacos:
+      discovery:
+        # 服务发现地址
+        server-addr: ${nacos.server}
+      config:
+        # 必须配置实际地址，否则编译的时候nacos会去连接默认的localhost:8848,且连接失败，也可以配置enabled：false，关闭配置
+        server-addr: ${nacos.server}
